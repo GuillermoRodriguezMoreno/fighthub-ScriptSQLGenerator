@@ -1,6 +1,5 @@
 import random
 
-
 def generate_random_lat_andalucia():
     # Límites aproximados de latitud y longitud de Andalucía
     lat_min, lat_max = 36.0, 38.7
