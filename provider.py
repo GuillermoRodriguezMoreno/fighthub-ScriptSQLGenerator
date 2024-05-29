@@ -49,3 +49,27 @@ class GymNameProvider(BaseProvider):
 
     def gym_name(self):
         return self.random_element(self.gym_names)
+
+
+class FightEventProvider(BaseProvider):
+    fight_event_names = [
+        "Ultimate Showdown", "Champions Clash", "Warriors Battle", "Fight Night",
+        "Gladiator Games", "Battle of the Titans", "Knockout Championship",
+        "MMA Grand Prix", "Rage in the Cage", "Fight for Glory",
+        "Ultimate Fighter", "Battle Royale", "Fight Fest", "Warriors Path",
+        "Cage Warriors", "Victory Challenge", "Rumble in the Ring",
+        "Fight of the Champions", "Combat Kings", "The Final Round",
+        "Warriors Quest", "Battle for Supremacy", "Knockout Kings",
+        "Raging Warriors", "Combat Showdown", "Fight to the Finish",
+        "Champions Arena", "Warriors War", "Gladiators Arena",
+        "The Ultimate Battle", "Fight Masters", "MMA Showdown",
+        "Rumble in the Arena", "Cage Combat", "Battle Grounds",
+        "Fight Championship", "Warriors Crown", "Rage of the Gladiators",
+        "Ultimate Combat", "Champions War", "Fight Night Extravaganza",
+        "Warriors Arena", "MMA Fight Fest", "The Combat Challenge",
+        "Battle of the Champions", "Ultimate Warrior", "Knockout Clash",
+        "Fight Kingdom", "Rumble Royale"
+    ]
+
+    def fight_event_name(self):
+        return self.random_element(self.fight_event_names)

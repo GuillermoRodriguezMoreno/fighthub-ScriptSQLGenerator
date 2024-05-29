@@ -19,17 +19,17 @@ def generate_sql_script():
     # Add fighter_follow_request data
     sql_script += "\n"+insert_data.generate_fighter_follow_request_insert_statement(10)
     # Add event data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_event_insert_statement(10, 10)
     # Add club_membership_request data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_club_membership_request_insert_statement(10, 10)
     # Add club_review data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_club_review_insert_statement(10, 10)
     # Add event_review data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_event_review_insert_statement(10, 10)
     # Add fight data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_fight_insert_statement(10, 10, 10)
     # Add fight_inscription_request data
-    sql_script += "\n"
+    sql_script += "\n"+insert_data.generate_fight_inscription_request_insert_statement(10, 10, 10)
 
     return sql_script
 
