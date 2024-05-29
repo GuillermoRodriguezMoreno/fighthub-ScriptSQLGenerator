@@ -1,6 +1,6 @@
 import insert_data
 
-
+#toDo -- MIRAR RELACION DE FIGHTER CON PRESIDENTE DE CLUB
 def generate_sql_script():
     # Initialize the SQL script
     sql_script = ""

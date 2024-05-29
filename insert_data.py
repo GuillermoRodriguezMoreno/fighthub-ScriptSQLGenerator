@@ -30,7 +30,10 @@ def generate_fighter_insert_statement(number_of_inserts):
         latitude = util.generate_random_lat_andalucia()
         longitude = util.generate_random_long_andalucia()
         losses = random.randint(0, 10)
-        name = fake.name()
+        if gender == "Male":
+            name = fake.name_male()
+        else:
+            name = fake.name_female()
         weight = random.uniform(30, 150)
         wins = random.randint(0, 30)
         kos = random.randint(0, wins)
@@ -88,6 +91,16 @@ INSERT INTO club (  name, city, country, postal_code, state, street, phone, emai
                     deleted, president_id)
     VALUES ('{name}', '{city}', '{country}', '{postal_code}', '{state}', '{street}', '{phone}', '{email}',
             '{register_date}', '{description}', {deleted}, {president_id});
+"""
+        insert_statement = insert_statement.strip()
+        insert_statement += "\n"
+
+        # ############################## #
+        # ASSOCIATE CLUB WITH PRESIDENT  #
+        # ############################## #
+        #### UPDATE STATEMENT ####
+        insert_statement += f"""
+UPDATE fighter SET club_administered_id = {president_id} WHERE id = {president_id};
 """
         insert_statement = insert_statement.strip()
         insert_statement += "\n"
