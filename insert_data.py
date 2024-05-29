@@ -73,7 +73,7 @@ INSERT INTO fighter_style ( fighter_id, style_id)
 # CLUB
 def generate_club_insert_statement(number_of_inserts, total_fighters):
     insert_statement = "-- CLUB"
-    for _ in range(number_of_inserts):
+    for club_id in range(1, number_of_inserts + 1):
         name = fake.gym_name()
         state = fake.andalucia_province()
         city = fake.city_from_province(state)
@@ -100,7 +100,7 @@ INSERT INTO club (  name, city, country, postal_code, state, street, phone, emai
         # ############################## #
         #### UPDATE STATEMENT ####
         insert_statement += f"""
-UPDATE fighter SET club_administered_id = {president_id} WHERE id = {president_id};
+UPDATE fighter SET club_administered_id = {club_id} WHERE id = {president_id};
 """
         insert_statement = insert_statement.strip()
         insert_statement += "\n"

@@ -83,7 +83,7 @@
       <workItem from="1716966349374" duration="249000" />
       <workItem from="1716968540364" duration="10635000" />
       <workItem from="1716992870311" duration="2069000" />
-      <workItem from="1716995224810" duration="1531000" />
+      <workItem from="1716995224810" duration="1930000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -125,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716996384215</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="terminado??">
+      <option name="closed" value="true" />
+      <created>1716996929176</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716996929176</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,8 +147,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="terminado??" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$sql_script_generator.coverage" NAME="sql_script_generator Coverage Results" MODIFIED="1716996393432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$reset.coverage" NAME="reset Coverage Results" MODIFIED="1716996390960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$sql_script_generator.coverage" NAME="sql_script_generator Coverage Results" MODIFIED="1716996948208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$reset.coverage" NAME="reset Coverage Results" MODIFIED="1716996933696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$SQL_ScriptGenerator.coverage" NAME="SQL_ScriptGenerator Coverage Results" MODIFIED="1716909936466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/fighthub_ScriptSQLGenerator$insert_data.coverage" NAME="insert_data Coverage Results" MODIFIED="1716928528148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
