@@ -15,7 +15,7 @@ fake.add_provider(provider.FightEventProvider)
 # FIGHTER
 def generate_fighter_insert_statement(number_of_inserts):
     insert_statement = "-- FIGHTER"
-    for _ in range(number_of_inserts):
+    for _ in range(1, number_of_inserts + 1):
         birth_date = fake.date_of_birth(minimum_age=14, maximum_age=50).strftime('%Y-%m-%d')
         email = fake.unique.email()
         password = fake.password(length=8, special_chars=True, digits=True, upper_case=True, lower_case=True)
@@ -235,7 +235,7 @@ INSERT INTO fighter_follow_request (request_date, response_date, status, receive
 # EVENT
 def generate_event_insert_statement(number_of_inserts, total_clubs):
     insert_statement = "-- EVENT"
-    for _ in range(number_of_inserts):
+    for event_id in range(1, number_of_inserts + 1):
         country = 'Spain'
         postal_code = fake.postcode()
         state = fake.andalucia_province()
@@ -254,6 +254,13 @@ INSERT INTO event ( city, country, postal_code, state, street, description, end_
                     start_date, club_id)                
     VALUES (    '{city}', '{country}', '{postal_code}', '{state}', '{street}', '{description}', '{end_date}', 
                 '{name}', '{open_date}', '{start_date}', {club_id});
+"""
+        insert_statement = insert_statement.strip()
+        insert_statement += "\n"
+
+        #### ASSOCIATE EVENT WITH CLUB ####
+        insert_statement += f"""
+INSERT INTO event_club (club_id, event_id) VALUES ({club_id}, {event_id});
 """
         insert_statement = insert_statement.strip()
         insert_statement += "\n"
@@ -322,8 +329,11 @@ INSERT INTO event_review (content, rating, review_date, event_id, fighter_id)
 # FIGHT
 def generate_fight_insert_statement(total_events, total_fighters, total_fights):
     insert_statement = "-- FIGHT"
+    # event_fighter cant be duplicated so we use a dict-set
+    event_fighter = dict()
     for event_id in range(1, total_events + 1):
         fight_order = 0
+        event_fighter[event_id] = set()
         for fight in range(1, random.randint(5, total_fights + 1)):
             fight_order += 1
             is_title_fight = random.choice([True, False])
@@ -337,12 +347,11 @@ def generate_fight_insert_statement(total_events, total_fighters, total_fights):
             red_corner_fighter_id = random.randint(1, total_fighters)
             if blue_corner_fighter_id == red_corner_fighter_id:
                 red_corner_fighter_id = random.randint(1, total_fighters)
-            event_id = random.randint(1, total_events)
             style_id = random.randint(1, 6)
             winner_id = None
             if (random.choice([True, False])):
                 winner_id = random.choice([blue_corner_fighter_id, red_corner_fighter_id])
-
+            ##### INSERT FIGHT STATEMENT ####
             insert_statement += f"""
 INSERT INTO fight ( fight_order, is_title_fight, minutes, total, start_time, weight, is_ko, 
                     blue_corner_fighter_id, category_id, event_id, red_corner_fighter_id, style_id,
@@ -351,6 +360,25 @@ INSERT INTO fight ( fight_order, is_title_fight, minutes, total, start_time, wei
             {blue_corner_fighter_id}, {category_id}, {event_id}, {red_corner_fighter_id}, {style_id}, 
             {f"'{winner_id}'" if winner_id else 'NULL'});
 """
+            insert_statement = insert_statement.strip()
+            insert_statement += "\n"
+
+            ### ASSOCIATE FIGHTER WITH EVENT ###
+            # Control duplicates
+            if blue_corner_fighter_id not in event_fighter[event_id]:
+                insert_statement += f"""
+    INSERT INTO event_fighter (event_id, fighter_id) VALUES ({event_id}, {blue_corner_fighter_id});
+"""
+                insert_statement = insert_statement.strip()
+                insert_statement += "\n"
+
+            if red_corner_fighter_id not in event_fighter[event_id]:
+                insert_statement += f"""
+    INSERT INTO event_fighter (event_id, fighter_id) VALUES ({event_id}, {red_corner_fighter_id});
+"""
+            event_fighter[event_id].add(blue_corner_fighter_id)
+            event_fighter[event_id].add(red_corner_fighter_id)
+
             insert_statement = insert_statement.strip()
             insert_statement += "\n"
 
