@@ -201,13 +201,15 @@ def generate_follow_insert_statement(total_fighters):
     for follower_id in range(1, total_fighters + 1):
         follow_date = fake.date_time_this_year(before_now=True).strftime('%Y-%m-%d %H:%M')
         followed_id = random.randint(1, total_fighters)
-        if follower_id != followed_id:
-            insert_statement += f"""
+        while follower_id == followed_id:
+            followed_id = random.randint(1, total_fighters)
+
+        insert_statement += f"""
 INSERT INTO follow (follow_date, follower_fighter_id, followed_fighter_id)
-    VALUES ('{follow_date}', {follower_id}, {followed_id});
+VALUES ('{follow_date}', {follower_id}, {followed_id});
 """
-            insert_statement = insert_statement.strip()
-            insert_statement += "\n"
+        insert_statement = insert_statement.strip()
+        insert_statement += "\n"
 
     return insert_statement
 
@@ -345,7 +347,7 @@ def generate_fight_insert_statement(total_events, total_fighters, total_fights):
             blue_corner_fighter_id = random.randint(1, total_fighters)
             category_id = random.randint(1, 4)
             red_corner_fighter_id = random.randint(1, total_fighters)
-            if blue_corner_fighter_id == red_corner_fighter_id:
+            while blue_corner_fighter_id == red_corner_fighter_id:
                 red_corner_fighter_id = random.randint(1, total_fighters)
             style_id = random.randint(1, 6)
             winner_id = None
