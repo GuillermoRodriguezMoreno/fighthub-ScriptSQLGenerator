@@ -147,8 +147,8 @@ def generate_fighter_profile_photo_insert_statement(total_fighters):
         url = URL + str(random.randint(1, 28)) + ".jpg"
         ##### INSERT STATEMENT ####
         insert_statement += f"""
-INSERT INTO photo ( entity_type, upload_date, url, fighter_id)
-    VALUES ('{entity_type}', '{upload_date}', '{url}', {fighter_id});
+INSERT INTO photo ( entity_type, upload_date, url, fighter_id, fighter_profile_id)
+    VALUES ('{entity_type}', '{upload_date}', '{url}', {fighter_id}, {fighter_id});
 """
         insert_statement = insert_statement.strip()
         insert_statement += "\n"
@@ -176,8 +176,8 @@ def generate_club_photo_insert_statement(total_clubs):
         url = URL + str(random.randint(1, 12)) + ".jpg"
         ##### INSERT STATEMENT ####
         insert_statement += f"""
-INSERT INTO photo ( entity_type, upload_date, url, club_id)
-    VALUES ('{entity_type}', '{upload_date}', '{url}', {club_id});
+INSERT INTO photo ( entity_type, upload_date, url, club_id, club_profile_id)
+    VALUES ('{entity_type}', '{upload_date}', '{url}', {club_id}, {club_id});
 """
         insert_statement = insert_statement.strip()
         insert_statement += "\n"
