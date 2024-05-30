@@ -6,11 +6,39 @@ TOTAL_CLUBS = 5
 TOTAL_EVENTS = 10
 TOTAL_STYLES = 6
 TOTAL_FIGHTS = 10
+FILE_PATH = 'sql/insert_data_generated.sql'
+API_REST_PATH = '/home/guille/IdeaProjects/fighthub-RestAPI/src/main/resources/sql/insert_data_generated.sql'
+SQL_SCRIPT = """        
+USE fighthub_sql;
+
+-- CATEGORY
+INSERT INTO category (name) VALUES
+                                ('Professional'),
+                                ('Amateur'),
+                                ('Semi-Professional'),
+                                ('Junior');
+
+-- STYLE
+INSERT INTO style (name) VALUES
+                             ('Boxing'),
+                             ('Muay Thai'),
+                             ('Brazilian Jiu-Jitsu'),
+                             ('Kickboxing'),
+                             ('K1'),
+                             ('MMA');
+                             
+-- ROLE
+INSERT INTO role (role) VALUES
+                            ('ADMIN'),
+                            ('FIGHTER'),
+                            ('CLUB_ADMIN');
+                            
+"""
 
 
 def generate_sql_script():
     # Initialize the SQL script
-    sql_script = ""
+    sql_script = SQL_SCRIPT
     # Add Fighter data
     sql_script += insert_data.generate_fighter_insert_statement(TOTAL_FIGHTERS)
     # Associate Fighters with Role
@@ -48,7 +76,7 @@ def generate_sql_script():
 sql_script = generate_sql_script()
 
 # Guardar el script SQL en un archivo
-with open('sql/insert_data.sql', 'a') as file:
+with open(API_REST_PATH, 'w') as file:
     file.write(sql_script)
 
 print("Script SQL generado exitosamente.")
